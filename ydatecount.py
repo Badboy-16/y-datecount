@@ -26,14 +26,14 @@ def days_since_until():
     if d < today:
         delta = today - d
         delta = str(delta.days)
-        print (delta & " days since " & input_date & " .")
+        print (delta + " days since " + input_date + " .")
     elif d == today:
         delta = 0
         print ("Today is the date.")
     elif d > today:
         delta = d - today
         delta = str(delta.days)
-        print (delta & " days until " & input_date & " .")
+        print (delta + " days until " + input_date + " .")
 
 def days_between():
 
@@ -42,9 +42,9 @@ def days_between():
     d1 = input("Please input the first date in yyyy-dd-mm ")
     d2 = input("Please input the second date in yyyy-dd-mm ")
 
-    delta = d2 - d1
+    delta = d2 - d1 # To debug.
     delta = str(abs(delta.days))
-    print ("There are " & delta & " days between " & str(d1) & " " & str(d2) & ".")
+    print ("There are " + delta + " days between " + str(d1) + " " + str(d2) + ".")
 
 def days_before_after():
 
@@ -55,10 +55,10 @@ def days_before_after():
 
     if before_after == "f":
         date = today + timedelta(days=days_to)
-        print (str(days_to) & " days after today: " & str(date) & ".")
+        print (str(days_to) + " days after today: " + str(date) + ".")
     elif before_after == "p":
         date = today - timedelta(days=days_to)
-        print (str(days_to) & " days before today: " & str(date) & ".")
+        print (str(days_to) + " days before today: " + str(date) + ".")
     else:
         raise ValueError("Variable before_after has no valid input. The programme is really confused.")
 
