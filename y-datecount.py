@@ -1,9 +1,12 @@
 from datetime import date
 from datetime import timedelta
+from sys import exit
+
+today = date.today()
 
 def days_since_until():
 
-'''Calculate the number of days since/until a specified date.'''
+    '''Calculate the number of days since/until a specified date.'''
 
     input_date = str(input("Please input a date you would like to calculate in yyyy-mm-dd "))
     input_date_year = input_date[:4]
@@ -12,10 +15,10 @@ def days_since_until():
 
     year = int(input_date_year)
 
-    if input_date_month[0] = "0" and len(input_date_month) = 2:
+    if input_date_month[0] == "0" and len(input_date_month) == 2:
         month = int(input_date_month[1])
 
-    if input_date_day[0] = "0" and len(input_date_day) = 2:
+    if input_date_day[0] == "0" and len(input_date_day) == 2:
         day = int(input_date_day[1])
 
     d = date(year, month, day)
@@ -24,7 +27,7 @@ def days_since_until():
         delta = today - d
         delta = str(delta.days)
         print (delta & " days since " & input_date & " .")
-    elif d = today:
+    elif d == today:
         delta = 0
         print ("Today is the date.")
     elif d > today:
@@ -34,7 +37,7 @@ def days_since_until():
 
 def days_between():
 
-'''Calculate the number of days between two specified dates.'''
+    '''Calculate the number of days between two specified dates.'''
 
     d1 = input("Please input the first date in yyyy-dd-mm ")
     d2 = input("Please input the second date in yyyy-dd-mm ")
@@ -45,15 +48,15 @@ def days_between():
 
 def days_before_after():
 
-'''Show the date of x days before/after specified by user.'''
+    '''Show the date of x days before/after specified by user.'''
 
     before_after = input("Is this date in the (f)uture or in the (p)ast?")
     days_to = int(input("How many days?"))
 
-    if before_after = "f":
+    if before_after == "f":
         date = today + timedelta(days=days_to)
         print (str(days_to) & " days after today: " & str(date) & ".")
-    elif before_after = "p":
+    elif before_after == "p":
         date = today - timedelta(days=days_to)
         print (str(days_to) & " days before today: " & str(date) & ".")
     else:
@@ -61,29 +64,23 @@ def days_before_after():
 
 def main_menu():
 
-    Print ("Please specify what would you like to do:")
-    Print ("(1) Calculate the number of days since/until a specified date.")
-    Print ("(2) Calculate the number of days between two specified dates.")
-    Print ("(3) Show the date of x days before/after.")
-    Print ("(4) Exit the programme.")
+    print ("Please specify what would you like to do:")
+    print ("(1) Calculate the number of days since/until a specified date.")
+    print ("(2) Calculate the number of days between two specified dates.")
+    print ("(3) Show the date of x days before/after.")
+    print ("(4) Exit the programme.")
 
     user_option = int(input())
 
-    if user_option = 1:
+    if user_option == 1:
         days_since_until()
-    elif user_option = 2:
+    elif user_option == 2:
         days_between()
-    elif user_option = 3:
-        days_before_after():
-    elif user_option = 4:
-        quit = True
+    elif user_option == 3:
+        days_before_after()
+    elif user_option == 4:
+        sys.exit(0)
 
 def main():
 
-    today = date.today()
-
-    while quit = False:
-        try:
-            main_menu()
-        except:
-            Print ("No valid input.")
+    main_menu()
