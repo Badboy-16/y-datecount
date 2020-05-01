@@ -17,9 +17,13 @@ def days_since_until():
 
     if input_date_month[0] == "0" and len(input_date_month) == 2:
         month = int(input_date_month[1])
+    else:
+        month = int(input_date_month)
 
     if input_date_day[0] == "0" and len(input_date_day) == 2:
         day = int(input_date_day[1])
+    else:
+        day = int(input_date_day)
 
     d = date(year, month, day)
 
@@ -41,10 +45,13 @@ def days_between():
 
     d1 = input("Please input the first date in yyyy-dd-mm ")
     d2 = input("Please input the second date in yyyy-dd-mm ")
+    
+    d1 = date(int(d1[:4]), int(d1[5:7]), int(d1[8:]))
+    d2 = date(int(d2[:4]), int(d2[5:7]), int(d2[8:]))
 
-    delta = d2 - d1 # To debug.
+    delta = d2 - d1
     delta = str(abs(delta.days))
-    print ("There are " + delta + " days between " + str(d1) + " " + str(d2) + ".")
+    print ("There are " + delta + " days between " + str(d1) + " and " + str(d2) + ".")
 
 def days_before_after():
 
@@ -60,7 +67,8 @@ def days_before_after():
         date = today - timedelta(days=days_to)
         print (str(days_to) + " days before today: " + str(date) + ".")
     else:
-        raise ValueError("Variable before_after has no valid input. The programme is really confused.")
+        print ("Invalid input.")
+        days_before_after()
 
 def main_menu():
 
