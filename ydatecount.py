@@ -7,36 +7,45 @@ def days_since_until():
 
     '''Calculate the number of days since/until a specified date.'''
 
+    input_date_format = False
+
     input_date = str(input("Please input a date you would like to calculate in yyyy-mm-dd "))
-    input_date_year = input_date[:4]
-    input_date_month = input_date[5:7]
-    input_date_day = input_date[8:]
+    
+    while input_date_format == False:
+        
+        error_checking()
 
-    year = int(input_date_year)
-
-    if input_date_month[0] == "0" and len(input_date_month) == 2:
-        month = int(input_date_month[1])
     else:
-        month = int(input_date_month)
+    
+        input_date_year = input_date[:4]
+        input_date_month = input_date[5:7]
+        input_date_day = input_date[8:]
 
-    if input_date_day[0] == "0" and len(input_date_day) == 2:
-        day = int(input_date_day[1])
-    else:
-        day = int(input_date_day)
+        year = int(input_date_year)
 
-    d = date(year, month, day)
+        if input_date_month[0] == "0" and len(input_date_month) == 2:
+            month = int(input_date_month[1])
+        else:
+            month = int(input_date_month)
 
-    if d < today:
-        delta = today - d
-        delta = str(delta.days)
-        print (delta + " days since " + input_date + " .")
-    elif d == today:
-        delta = 0
-        print ("Today is the date.")
-    elif d > today:
-        delta = d - today
-        delta = str(delta.days)
-        print (delta + " days until " + input_date + " .")
+        if input_date_day[0] == "0" and len(input_date_day) == 2:
+            day = int(input_date_day[1])
+        else:
+            day = int(input_date_day)
+
+        d = date(year, month, day)
+
+        if d < today:
+            delta = today - d
+            delta = str(delta.days)
+            print (delta + " days since " + input_date + " .")
+        elif d == today:
+            delta = 0
+            print ("Today is the date.")
+        elif d > today:
+            delta = d - today
+            delta = str(delta.days)
+            print (delta + " days until " + input_date + " .")
 
 def days_between():
 
@@ -68,6 +77,18 @@ def days_before_after():
     else:
         print ("Invalid input.")
         days_before_after()
+
+def error_checking():
+    
+    if len(input_date) == 10:
+        if input_date[4] != "-" or input_date[7] != "-" or input_date[:4].isnumeric() == False or input_date[5:7].isnumeric() == False or input_date[8:].isnumeric() == False:
+            input_date = str(input("Invalid input. Please try again."))
+        else:
+            input_date_format = True
+    elif len(input_date) != 10:
+        input_date = str(input("Invalid input. Please try again."))
+    else:
+        input_date_format = True
 
 def main_menu():
 
