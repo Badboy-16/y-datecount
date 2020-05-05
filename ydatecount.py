@@ -7,30 +7,10 @@ def days_since_until():
 
     '''Calculate the number of days since/until a specified date.'''
 
+    input_date = str(input("Please input a date you would like to calculate in yyyy-mm-dd "))
     input_date_format = False
 
-    input_date = str(input("Please input a date you would like to calculate in yyyy-mm-dd "))
-    
-    while input_date_format == False:
-        error_checking(input_date)
-    
-    input_date_year = input_date[:4]
-    input_date_month = input_date[5:7]
-    input_date_day = input_date[8:]
-
-    year = int(input_date_year)
-
-    if input_date_month[0] == "0" and len(input_date_month) == 2:
-        month = int(input_date_month[1])
-    else:
-        month = int(input_date_month)
-
-    if input_date_day[0] == "0" and len(input_date_day) == 2:
-        day = int(input_date_day[1])
-    else:
-        day = int(input_date_day)
-
-    d = date(year, month, day)
+    d, input_date = check_date_format(input_date, input_date_format)
 
     if d < today:
         delta = today - d
@@ -44,20 +24,28 @@ def days_since_until():
         delta = str(delta.days)
         print (delta + " days until " + input_date + " .")
 
+    check_user()
+
 def days_between():
 
     '''Calculate the number of days between two specified dates.'''
 
-    d1 = input("Please input the first date in yyyy-dd-mm ")
-    d2 = input("Please input the second date in yyyy-dd-mm ")
+    input1 = input("Please input the first date in yyyy-dd-mm ")
+    input_date_format1 = False
     
-    d1 = date(int(d1[:4]), int(d1[5:7]), int(d1[8:]))
-    d2 = date(int(d2[:4]), int(d2[5:7]), int(d2[8:]))
-
+    d1, input1 = check_date_format(input1, input_date_format1)
+    
+    input2 = input("Please input the second date in yyyy-dd-mm ")
+    input_date_format2 = False
+    
+    d2, input2 = check_date_format(input2, input_date_format2)
+    
     delta = d2 - d1
     delta = str(abs(delta.days))
     print ("There are " + delta + " days between " + str(d1) + " and " + str(d2) + ".")
-
+    
+    check_user()
+    
 def days_before_after():
 
     '''Show the date of x days before/after specified by user.'''
@@ -74,18 +62,32 @@ def days_before_after():
     else:
         print ("Invalid input.")
         days_before_after()
+        
+    check_user()
 
-def error_checking(input_date):
+def check_user():
     
-    if len(input_date) == 10:
-        if input_date[4] != "-" or input_date[7] != "-" or input_date[:4].isnumeric() == False or input_date[5:7].isnumeric() == False or input_date[8:].isnumeric() == False:
+    check_user_option = input("Do you need anything else? (Y/n) ")
+    
+    while check_user_option != "Y" and check_user_option != "n":
+        check_user_option = input("Invalid input. Please try again. (Y/n) ")
+    else:
+        if check_user_option == "Y":
+            main_menu()
+        else:
+            exit(0)
+
+def check_date_format(input_date, input_date_format):
+    
+    while input_date_format == False:
+        try:
+            d = date(int(input_date[:4]), int(input_date[5:7]), int(input_date[8:]))
+        except:
             input_date = str(input("Invalid input. Please try again."))
         else:
-            break
-    elif len(input_date) != 10:
-        input_date = str(input("Invalid input. Please try again."))
-    else:
-        break
+            input_date_format = True
+    
+    return d, input_date
 
 def main_menu():
 
@@ -104,7 +106,7 @@ def main_menu():
     elif user_option == 3:
         days_before_after()
     elif user_option == 4:
-        sys.exit(0)
+        exit(0)
 
 def main():
 
