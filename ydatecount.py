@@ -48,7 +48,7 @@ def days_between():
     
 def days_before_after():
 
-    '''Show the date of x days before/after specified by user.'''
+    '''Show the date of x days ago/later specified by user.'''
 
     before_after = input("Is this date in the (f)uture or in the (p)ast?")
     days_to = int(input("How many days?"))
@@ -62,6 +62,30 @@ def days_before_after():
     else:
         print ("Invalid input.")
         days_before_after()
+        
+    check_user()
+
+def days_before_after_date():
+    
+    '''Show the date of x days before/after a date specified by user.'''
+    
+    input_date = str(input("Please input a date you would like to base your calculate on in yyyy-mm-dd "))
+    input_date_format = False
+
+    d, input_date = check_date_format(input_date, input_date_format)
+    
+    before_after = input("Is the date to calculate in the (f)uture or in the (p)ast relative to the base date?")
+    days_to = int(input("How many days?"))
+    
+    if before_after == "f":
+        date = d + timedelta(days=days_to)
+        print (str(days_to) + " days after " + str(d) + ": " + str(date) + ".")
+    elif before_after == "p":
+        date = d - timedelta(days=days_to)
+        print (str(days_to) + " days before " + str(d) + ": " + str(date) + ".")
+    else:
+        print ("Invalid input.")
+        days_before_after_date()
         
     check_user()
 
@@ -94,8 +118,9 @@ def main_menu():
     print ("Please specify what would you like to do:")
     print ("(1) Calculate the number of days since/until a specified date.")
     print ("(2) Calculate the number of days between two specified dates.")
-    print ("(3) Show the date of x days before/after.")
-    print ("(4) Exit the programme.")
+    print ("(3) Show the date of x days before/after today.")
+    print ("(4) Show the date of x days before/after a specified date.")
+    print ("(5) Exit the programme.")
 
     user_option = int(input())
 
@@ -106,6 +131,8 @@ def main_menu():
     elif user_option == 3:
         days_before_after()
     elif user_option == 4:
+        days_before_after_date()
+    elif user_option == 5:
         exit(0)
 
 def main():
