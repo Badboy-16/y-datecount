@@ -12,7 +12,7 @@ So the idea of using an offline date calculator emerged.
 * Show the date of x days before/after a date specified by user.
 
 ## Development Status
-* So far only the code of the main programme has be completed. I'm yet to write setup.py to package my code.
+So far only the code of the main programme has be completed. I'm yet to write setup.py to package my code.
 
 ## License
-* This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
+This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
