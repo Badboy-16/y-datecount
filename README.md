@@ -11,8 +11,40 @@ So the idea of using an offline date calculator emerged.
 * Show the date of x days ago/later specified by user.
 * Show the date of x days before/after a date specified by user.
 
-## Development Status
-So far only the code of the main programme has be completed. I'm yet to write setup.py to package my code.
+## Supported Platforms
+
+* Linux (tested on Ubuntu 20.04 LTS)
+* macOS (coming soon)
+
+## Installation
+
+### Build from Source
+
+#### Instruction
+
+Install dependency
+
+```sh
+$ pip3 install pyinstaller 
+```
+
+Clone the source and change directory
+
+```sh
+$ git clone https://github.com/Badboy-16/y-datecount && cd y-datecount 
+```
+
+Build the programme
+
+```sh
+$ pyinstaller -F -n ydatecount __main__.py 
+```
+
+Run the programme
+
+```sh
+$ cd dist && ./ydatecount 
+```
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
