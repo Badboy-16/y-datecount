@@ -51,7 +51,7 @@ python3 build.py
 Run the programme.
 
 ```sh
-cd dist && ./ydatecount 
+cd dist && chmod +x ydatecount && ./ydatecount 
 ```
 
 #### Option 2
