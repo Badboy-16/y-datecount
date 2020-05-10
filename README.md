@@ -32,25 +32,49 @@ where `/path/to/downloaded/file` is the location where the downloaded binary is.
 
 ### Build from Source
 
-Install dependency
+#### Option 1
 
-```sh
-$ pip3 install pyinstaller 
-```
-
-Clone the source and change directory
+Clone the source and change directory.
 
 ```sh
 $ git clone https://github.com/Badboy-16/y-datecount && cd y-datecount 
 ```
 
-Build the programme
+Run `build.py`.
+
+`build.py` will install the dependency and build the binary.
+
+```sh
+python3 build.py 
+```
+
+Run the programme.
+
+```sh
+./ydatecount 
+```
+
+#### Option 2
+
+Clone the source and change directory.
+
+```sh
+$ git clone https://github.com/Badboy-16/y-datecount && cd y-datecount 
+```
+
+Install dependency.
+
+```sh
+$ pip3 install pyinstaller 
+```
+
+Build the programme.
 
 ```sh
 $ pyinstaller -F -n ydatecount __main__.py 
 ```
 
-Run the programme
+Run the programme.
 
 ```sh
 $ cd dist && chmod +x ydatecount && ./ydatecount 
@@ -58,3 +82,4 @@ $ cd dist && chmod +x ydatecount && ./ydatecount
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
+
