@@ -25,7 +25,7 @@ Go to the "releases" tab and download the latest binary release.
 Run the programme from the command line.
 
 ```sh
-cd /path/to/downloaded/file && ./ydatecount
+cd /path/to/downloaded/file && chmod +x ydatecount && ./ydatecount
 ```
 
 where `/path/to/downloaded/file` is the location where the downloaded binary is.
@@ -53,7 +53,7 @@ $ pyinstaller -F -n ydatecount __main__.py
 Run the programme
 
 ```sh
-$ cd dist && ./ydatecount 
+$ cd dist && chmod +x ydatecount && ./ydatecount 
 ```
 
 ## License
