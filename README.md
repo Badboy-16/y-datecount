@@ -1,5 +1,5 @@
 # y-datecount
-A calculator for dates.
+A command line calculator for dates.
 
 ## Motivation
 Sometimes I would find myself searching the web to find an online tool to see how many days were passed since my anniversary, or what date it is 100 days later.
@@ -18,9 +18,19 @@ So the idea of using an offline date calculator emerged.
 
 ## Installation
 
-### Build from Source
+### Install from Binary
 
-#### Instruction
+Go to the "releases" tab and download the latest binary release.
+
+Run the programme from the command line.
+
+```sh
+cd /path/to/downloaded/file && ./ydatecount
+```
+
+where `/path/to/downloaded/file` is the location where the downloaded binary is.
+
+### Build from Source
 
 Install dependency
 
